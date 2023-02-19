@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from discord import Client, Intents
 from configparser import ConfigParser
+import sys
+sys.path.append("/home/allebot/discord")
 from plugins import allegro5
 allegro5.basedir = "/home/allebot/discord"
 
@@ -10,7 +12,7 @@ client = Client(intents=intents)
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author.bot:
         return
 
     if message.content.startswith("? "):
